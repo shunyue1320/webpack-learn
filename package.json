@@ -1,0 +1,29 @@
+{
+  "name": "webpack-learn",
+  "version": "1.0.0",
+  "description": "webpack learning list",
+  "main": "index.js",
+  "scripts": {
+    "div": "webpack serve",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shunyue1320/webpack-learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shunyue1320/webpack-learn/issues"
+  },
+  "homepage": "https://github.com/shunyue1320/webpack-learn#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "webpack-dev-server": "^4.7.4"
+  }
+}
