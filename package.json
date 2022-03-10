@@ -4,6 +4,8 @@
   "description": "webpack learning list",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack",
     "dev1": "node 1.js",
     "dev2": "node 2.js",
     "dev3": "node 3.js"

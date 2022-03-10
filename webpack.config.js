@@ -14,7 +14,35 @@ module.exports = {
     filename: "main.js",
     publicPath: ""
   },
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              // [
+              //   'babel-plugin-import',
+              //   {
+              //     libraryName: 'lodash',
+              //     libraryDirectory: ''
+              //   }
+              // ]
+              // 手写的插件
+              [
+                path.resolve(__dirname, "plugins/babel-plugin-import.js"),
+                {
+                  libraryName: 'lodash',
+                  libraryDirectory: ''
+                }
+              ],
+            ]
+          }
+        }
+      }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(), // 清除前次打包文件
     new HtmlWebpackPlugin({
