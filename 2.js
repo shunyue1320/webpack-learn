@@ -15,12 +15,13 @@ const transformEs2015ArrowFunctions = {
     ArrowFunctionExpression(path) {
       let { node } = path;
       let body = node.body;
-      hoistFunctionEnvironment(path);
-      node = "FunctionExpression"; // 改成es5函数
-      // 如果函数体不是语句块
+      hoistFunctionEnvironment(path);  // 外面加一次this指向：var _this = this;
+      node = "FunctionExpression";     // 改成es5函数 function
+      // 判断函数体是否是语句块
       if (!types.isBlockStatement(body)) {
-        // 块语句包裹 并 return 函数体： { return body }
+        // 不是语句块则块语句包裹并return函数体： { return body }
         node.body = types.blockStatement([types.returnStatement(body)]);
+        console.log("node.body =====", node.body)
       }
     },
   },
@@ -46,14 +47,14 @@ function hoistFunctionEnvironment(path) {
     }
   }
   thisPaths.forEach((thisPath) => {
-    //this=>_this
+    // 将所有 this => _this
     thisPath.replaceWith(types.identifier(thisBindings));
   });
 }
 
 function getThisPaths(path) {
   let thisPaths = [];
-  path.traverse({
+  path.traverse({ // traverse 便利 path 子节点拿到使用 this 的 path
     ThisExpression(path) {
       thisPaths.push(path);
     },
