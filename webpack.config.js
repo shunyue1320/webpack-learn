@@ -37,6 +37,7 @@ module.exports = {
                   libraryDirectory: ''
                 }
               ],
+              path.resolve(__dirname, "plugins/babel-logger.js")
             ]
           }
         }
